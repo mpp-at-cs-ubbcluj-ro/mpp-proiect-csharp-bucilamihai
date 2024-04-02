@@ -47,3 +47,6 @@ C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenCon
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\Children.8AE7B31E.Up2Date
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenContest.exe
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenContest.pdb
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenContest.csproj.GenerateResource.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenContest.OfficeView.resources
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\obj\Debug\ChildrenContest.LoginView.resources

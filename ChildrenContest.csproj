@@ -7,7 +7,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E8631663-AD6F-4B6C-90C8-30F284DA093E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>ChildrenContest</RootNamespace>
     <AssemblyName>ChildrenContest</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -59,7 +62,9 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,15 +73,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\LoginController.cs" />
     <Compile Include="domain\Challenge.cs" />
     <Compile Include="domain\Child.cs" />
     <Compile Include="domain\Enrollment.cs" />
     <Compile Include="domain\Entity.cs" />
     <Compile Include="domain\OfficeResponsable.cs" />
+    <Compile Include="views\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeService.cs" />
+    <Compile Include="controller\OfficeController.cs" />
+    <Compile Include="views\OfficeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\OfficeView.Designer.cs">
+      <DependentUpon>OfficeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\database\ChallengeDBRepository.cs" />
     <Compile Include="repository\database\ChildDBRepository.cs" />
+    <Compile Include="repository\database\DBUtils.cs" />
     <Compile Include="repository\database\EnrollmentDBRepository.cs" />
     <Compile Include="repository\database\OfficeResponsableDBRepository.cs" />
     <Compile Include="repository\interfaces\IChallengeRepository.cs" />
@@ -91,6 +112,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\OfficeView.resx">
+      <DependentUpon>OfficeView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

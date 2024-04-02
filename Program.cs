@@ -8,54 +8,46 @@ using log4net;
 using System.Data.SQLite;
 using ChildrenContest.repository;
 using ChildrenContest.repository.database;
+using System.IO;
+using System.Xml;
+using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
+using System.Configuration;
+using ChildrenContest.controller;
 
 namespace ChildrenContest
 {
     internal class Program
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        static private OfficeService officeService;
+        /*static private OfficeView officeView;*/
+        static private LoginView loginView;
+
         static void Main(string[] args)
         {
-            log.Info("Hello logging world!");
-            Console.WriteLine("Hit enter");
-            Console.ReadLine();
+            initializeService();
+            initializeView();
+            Application.Run(loginView);
+        }
 
-            // Connection string
-            string connectionString = "Data Source=\"C:\\Users\\bmcmi\\IdeaProjects\\databases\\children_contest.db\";Version=3;";
+        private static void initializeView()
+        {
+            /*OfficeController officeController = new OfficeController(officeService);
+            officeView = new OfficeView(officeController);*/
+            LoginController loginController = new LoginController(officeService);
+            loginView = new LoginView(loginController);
+        }
 
-            // Create connection
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                // Open the connection
-                connection.Open();
-
-                IChallengeRepository challengeRepository = new ChallengeDBRepository(connection);
-                //challengeRepository.Add(new Challenge("test", "test", 0));
-
-                foreach (Challenge challenge in challengeRepository.FindAll())
-                {
-                    Console.WriteLine(challenge.Id + challenge.Name);
-                }
-
-                Console.WriteLine(challengeRepository.FindById(4));
-
-                challengeRepository.Delete(challengeRepository.FindById(4));
-
-                foreach (Challenge challenge in challengeRepository.FindAll())
-                {
-                    Console.WriteLine(challenge.Id + challenge.Name);
-                }
-
-                challengeRepository.Update(new Challenge("updatetest", "updatetest", 0), 3);
-
-                foreach (Challenge challenge in challengeRepository.FindAll())
-                {
-                    Console.WriteLine(challenge.Id + challenge.Name);
-                }
-
-                // Close the connection
-                connection.Close();
-            }
+        private static void initializeService()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            string url = ConfigurationManager.ConnectionStrings["url"].ConnectionString;
+            properties["url"] = url;
+            IOfficeResponsableRepository officeResponsableRepository = new OfficeResponsableDBRepository(properties);
+            IChallengeRepository challengeRepository = new ChallengeDBRepository(properties);
+            IChildRepository childRepository = new ChildDBRepository(properties);
+            IEnrollmentRepository enrollmentRepository = new EnrollmentDBRepository(properties);
+            officeService = new OfficeService(officeResponsableRepository, challengeRepository, childRepository, enrollmentRepository);
         }
     }
 }

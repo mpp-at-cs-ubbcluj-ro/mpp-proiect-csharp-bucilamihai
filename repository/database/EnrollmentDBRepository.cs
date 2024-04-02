@@ -12,11 +12,12 @@ namespace ChildrenContest.repository.database
     internal class EnrollmentDBRepository : IEnrollmentRepository
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        SQLiteConnection connection;
+        private DBUtils dbUtils;
 
-        public EnrollmentDBRepository(SQLiteConnection connection)
+        public EnrollmentDBRepository(Dictionary<string, string> properties)
         {
-            this.connection = connection;
+            log.Info($"Initializing repository.database.EnrollmentDBRepository with properties: {properties}");
+            dbUtils = new DBUtils(properties);
         }
         public void Add(Enrollment elem)
         {
@@ -24,6 +25,7 @@ namespace ChildrenContest.repository.database
             try
             {
                 string sql = "INSERT INTO enrollments (child_id, challenge_id) VALUES (@child_id, @challenge_id)";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@child_id", elem.Child.Id);
@@ -45,6 +47,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "DELETE FROM enrollments " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", elem.Id);
@@ -65,6 +68,7 @@ namespace ChildrenContest.repository.database
             try
             {
                 string sql = "SELECT * FROM enrollments";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -77,7 +81,7 @@ namespace ChildrenContest.repository.database
                             Child child = null;
                             string sqlChild = "SELECT * FROM children " +
                                 "WHERE id = @id";
-                            using (SQLiteCommand commandChild = new SQLiteCommand(sql, connection))
+                            using (SQLiteCommand commandChild = new SQLiteCommand(sqlChild, connection))
                             {
                                 commandChild.Parameters.AddWithValue("@id", child_id);
                                 using (SQLiteDataReader readerChild = commandChild.ExecuteReader())
@@ -98,7 +102,7 @@ namespace ChildrenContest.repository.database
                             Challenge challenge = null;
                             string sqlChallenge = "SELECT * FROM challenges " +
                                 "WHERE id = @id";
-                            using (SQLiteCommand commandChallenge = new SQLiteCommand(sql, connection))
+                            using (SQLiteCommand commandChallenge = new SQLiteCommand(sqlChallenge, connection))
                             {
                                 commandChallenge.Parameters.AddWithValue("@id", id);
                                 using (SQLiteDataReader readerChallenge = commandChallenge.ExecuteReader())
@@ -137,6 +141,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "SELECT * FROM challenges " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -148,7 +153,7 @@ namespace ChildrenContest.repository.database
                             Child child = null;
                             string sqlChild = "SELECT * FROM children " +
                                 "WHERE id = @id";
-                            using (SQLiteCommand commandChild = new SQLiteCommand(sql, connection))
+                            using (SQLiteCommand commandChild = new SQLiteCommand(sqlChild, connection))
                             {
                                 commandChild.Parameters.AddWithValue("@id", child_id);
                                 using (SQLiteDataReader readerChild = commandChild.ExecuteReader())
@@ -169,7 +174,7 @@ namespace ChildrenContest.repository.database
                             Challenge challenge = null;
                             string sqlChallenge = "SELECT * FROM challenges " +
                                 "WHERE id = @id";
-                            using (SQLiteCommand commandChallenge = new SQLiteCommand(sql, connection))
+                            using (SQLiteCommand commandChallenge = new SQLiteCommand(sqlChallenge, connection))
                             {
                                 commandChallenge.Parameters.AddWithValue("@id", id);
                                 using (SQLiteDataReader readerChallenge = commandChallenge.ExecuteReader())
@@ -215,6 +220,7 @@ namespace ChildrenContest.repository.database
                 string sql = "UPDATE enrollments " +
                     "SET child_id = @child_id, challenge_id = @challenge_id " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);

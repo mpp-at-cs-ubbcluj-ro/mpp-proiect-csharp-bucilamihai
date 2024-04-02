@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ChildrenContest.repository
 {
-    internal interface IOfficeResponsableRepository: IRepository<long, OfficeResponsable>
+    internal interface IOfficeResponsableRepository : IRepository<long, OfficeResponsable>
     {
+        bool UserExists(string username, string password);
     }
 }

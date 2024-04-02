@@ -12,11 +12,12 @@ namespace ChildrenContest.repository.database
     internal class OfficeResponsableDBRepository : IOfficeResponsableRepository
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        SQLiteConnection connection;
+        private DBUtils dbUtils;
 
-        public OfficeResponsableDBRepository(SQLiteConnection connection)
+        public OfficeResponsableDBRepository(Dictionary<string, string> properties)
         {
-            this.connection = connection;
+            log.Info($"Initializing repository.database.OfficeResponsableDBRepository with properties: {properties}");
+            dbUtils = new DBUtils(properties);
         }
 
         public void Add(OfficeResponsable elem)
@@ -25,6 +26,8 @@ namespace ChildrenContest.repository.database
             try
             {
                 string sql = "INSERT INTO office_responsables (username, password) VALUES (@username, @password)";
+                SQLiteConnection connection = dbUtils.GetConnection();
+
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@username", elem.Username);
@@ -46,6 +49,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "DELETE FROM office_responsables " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", elem.Id);
@@ -66,6 +70,7 @@ namespace ChildrenContest.repository.database
             try
             {
                 string sql = "SELECT * FROM office_responsables";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -97,6 +102,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "SELECT * FROM office_responsables " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -135,6 +141,7 @@ namespace ChildrenContest.repository.database
                 string sql = "UPDATE office_responsables " +
                     "SET username = @username, password = @password " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -148,6 +155,34 @@ namespace ChildrenContest.repository.database
             {
                 log.Error(ex);
             }
+        }
+
+        public bool UserExists(string username, string password)
+        {
+            log.Info($"searching for user with username {username}");
+            try
+            {
+                string sql = "SELECT COUNT(*) FROM office_responsables " +
+                    "WHERE username = @username AND password = @password";
+                SQLiteConnection connection = dbUtils.GetConnection();
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@password", password);
+                    int result = Convert.ToInt32(command.ExecuteScalar());
+                    if(result > 0)
+                    {
+                        log.Info("user found");
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+            log.Info("user not found");
+            return false;
         }
     }
 }

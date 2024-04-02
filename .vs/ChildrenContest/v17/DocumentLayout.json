@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|c:\\users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|c:\\users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\loginview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:views\\loginview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\officeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:officeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:controller\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\officeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:views\\officeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\officecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:controller\\officecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\repository\\database\\officeresponsabledbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8631663-AD6F-4B6C-90C8-30F284DA093E}|ChildrenContest.csproj|solutionrelative:repository\\database\\officeresponsabledbrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,16 +46,88 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwCsAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T19:33:30.529Z",
+              "WhenOpened": "2024-03-18T19:33:30.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginView.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\LoginView.cs",
+              "RelativeDocumentMoniker": "views\\LoginView.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\LoginView.cs",
+              "RelativeToolTip": "views\\LoginView.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T19:35:46.17Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OfficeView.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\OfficeView.cs",
+              "RelativeDocumentMoniker": "views\\OfficeView.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\views\\OfficeView.cs",
+              "RelativeToolTip": "views\\OfficeView.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAEAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T11:54:57.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\LoginController.cs",
+              "RelativeDocumentMoniker": "controller\\LoginController.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\LoginController.cs",
+              "RelativeToolTip": "controller\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T19:37:15.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OfficeController.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\OfficeController.cs",
+              "RelativeDocumentMoniker": "controller\\OfficeController.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\controller\\OfficeController.cs",
+              "RelativeToolTip": "controller\\OfficeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T13:13:29.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OfficeService.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\OfficeService.cs",
+              "RelativeDocumentMoniker": "OfficeService.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\OfficeService.cs",
+              "RelativeToolTip": "OfficeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T12:43:35.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OfficeResponsableDBRepository.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\repository\\database\\OfficeResponsableDBRepository.cs",
+              "RelativeDocumentMoniker": "repository\\database\\OfficeResponsableDBRepository.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\repository\\database\\OfficeResponsableDBRepository.cs",
+              "RelativeToolTip": "repository\\database\\OfficeResponsableDBRepository.cs",
+              "ViewState": "AQIAAJsAAAAAAAAAAAAAwKEAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T20:01:01.677Z"
             }
           ]
         }

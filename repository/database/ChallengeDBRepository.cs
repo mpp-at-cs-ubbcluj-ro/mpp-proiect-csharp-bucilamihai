@@ -13,11 +13,13 @@ namespace ChildrenContest.repository.database
     internal class ChallengeDBRepository : IChallengeRepository
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        SQLiteConnection connection;
 
-        public ChallengeDBRepository(SQLiteConnection connection) 
+        private DBUtils dbUtils;
+
+        public ChallengeDBRepository(Dictionary<string, string> properties) 
         { 
-            this.connection = connection;
+            log.Info($"Initializing repository.database.ChallengeDBRepository with properties: {properties}");
+            dbUtils = new DBUtils(properties);
         }
 
         public void Add(Challenge elem)
@@ -26,6 +28,7 @@ namespace ChildrenContest.repository.database
             try
             {
                 string sql = "INSERT INTO challenges (name, groupAge, numberOfParticipants) VALUES (@name, @groupAge, @numberOfParticipants)";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@name", elem.Name);
@@ -41,6 +44,31 @@ namespace ChildrenContest.repository.database
             }
         }
 
+        public void Update(Challenge elem, long id)
+        {
+            log.Info($"updating challenge {elem} ");
+            try
+            {
+                string sql = "UPDATE challenges " +
+                    "SET name = @name, groupAge = @groupAge, numberOfParticipants = @numberOfParticipants " +
+                    "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
+                using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@name", elem.Name);
+                    command.Parameters.AddWithValue("@groupAge", elem.GroupAge);
+                    command.Parameters.AddWithValue("@numberOfParticipants", elem.NumberOfParticipants);
+                    int result = command.ExecuteNonQuery();
+                    log.Info($"updated {result} instances");
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+            }
+        }
+
         public void Delete(Challenge elem)
         {
             log.Info($"deleting challenge {elem} ");
@@ -48,6 +76,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "DELETE FROM challenges " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", elem.Id);
@@ -68,6 +97,7 @@ namespace ChildrenContest.repository.database
             try
             { 
                 string sql = "SELECT * FROM challenges";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -100,6 +130,7 @@ namespace ChildrenContest.repository.database
             {
                 string sql = "SELECT * FROM challenges " +
                     "WHERE id = @id";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
@@ -131,28 +162,39 @@ namespace ChildrenContest.repository.database
             return new Collection<Challenge>(FindAll().ToList());
         }
 
-        public void Update(Challenge elem, long id)
+        public Challenge GetByNameAndGroupAge(string challengeName, string groupAge)
         {
-            log.Info($"updating challenge {elem} ");
+            log.Info($"finding challenge with challengeName {challengeName} and groupAge {groupAge}");
             try
             {
-                string sql = "UPDATE challenges " +
-                    "SET name = @name, groupAge = @groupAge, numberOfParticipants = @numberOfParticipants " +
-                    "WHERE id = @id";
+                string sql = "SELECT * FROM challenges " +
+                    "WHERE name = @challengeName " +
+                    "AND groupAge = @groupAge";
+                SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@name", elem.Name);
-                    command.Parameters.AddWithValue("@groupAge", elem.GroupAge);
-                    command.Parameters.AddWithValue("@numberOfParticipants", elem.NumberOfParticipants);
-                    int result = command.ExecuteNonQuery();
-                    log.Info($"updated {result} instances");
+                    command.Parameters.AddWithValue("@challengeName", challengeName);
+                    command.Parameters.AddWithValue("@groupAge", groupAge);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            long id = reader.GetInt64(0);
+                            int numberOfParticipants = reader.GetInt32(3);
+                            Challenge challenge = new Challenge(challengeName, groupAge, numberOfParticipants);
+                            challenge.Id = id;
+                            log.Info($"challenge with id {id} found");
+                            return challenge;
+                        }
+                    }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                log.Error(ex);
+                log.Error(e);
             }
+            log.Info("challenge not found");
+            return null;
         }
     }
 }

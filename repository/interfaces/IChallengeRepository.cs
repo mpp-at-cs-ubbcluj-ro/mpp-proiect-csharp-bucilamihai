@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ChildrenContest.repository
 {
-    internal interface IChallengeRepository: IRepository<long, Challenge>
+    internal interface IChallengeRepository : IRepository<long, Challenge>
     {
-
+        Challenge GetByNameAndGroupAge(string challengeName, string groupAge);
     }
 }
