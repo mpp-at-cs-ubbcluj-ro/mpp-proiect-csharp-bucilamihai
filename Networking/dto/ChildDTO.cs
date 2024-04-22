@@ -9,9 +9,9 @@ namespace Networking.dto
     [Serializable]
     public class ChildDTO
     {
-        private long cnp;
-        private string name;
-        private int age;
+        public long cnp { get; set; }
+        public string name {  get; set; }
+        public int age {  get; set; }
 
         public ChildDTO(long cnp, string name, int age)
         {
@@ -19,24 +19,5 @@ namespace Networking.dto
             this.name = name;
             this.age = age;
         }
-
-        public virtual long Cnp
-        {
-            get { return cnp; }
-            set { cnp = value; }
-        }
-
-        public virtual string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public virtual int Age
-        {
-            get { return age; }
-            set { age = value; }
-        }
-
     }
 }

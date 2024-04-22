@@ -8,33 +8,15 @@ namespace Model
 {
     public class Challenge: Entity<long>
     {
-        private string name;
-        private string groupAge;
-        private int numberOfParticipants;
+        public string name { get; set; }
+        public string groupAge { get; set; }
+        public int numberOfParticipants { get; set; }
 
         public Challenge(string name, string groupAge, int numberOfParticipants)
         {
             this.name = name;
             this.groupAge = groupAge;
             this.numberOfParticipants = numberOfParticipants;
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string GroupAge
-        {
-            get { return groupAge; }
-            set {  groupAge = value; }
-        }
-
-        public int NumberOfParticipants
-        {
-            get { return numberOfParticipants; }
-            set { numberOfParticipants = value; }
         }
 
         public void increaseNumberOfParticipants()

@@ -50,7 +50,7 @@ namespace Client.views
         {
             challengesTable.Clear();
             foreach (var challenge in officeController.GetAllChallenges())
-                challengesTable.Rows.Add(challenge.Name, challenge.GroupAge, challenge.NumberOfParticipants);
+                challengesTable.Rows.Add(challenge.name, challenge.groupAge, challenge.numberOfParticipants);
             challenges_dataGridView.DataSource = challengesTable;
         }
 
@@ -59,7 +59,7 @@ namespace Client.views
             string challengeName = challengeName_textBox.Text;
             string groupAge = groupAge_comboBox.SelectedItem.ToString(); 
             foreach (var child in officeController.GetEnrolledChildren(challengeName, groupAge))
-                childrenTable.Rows.Add(child.Name, child.Age);
+                childrenTable.Rows.Add(child.name, child.age);
             children_dataGridView.DataSource = childrenTable;
         }
 

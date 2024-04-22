@@ -1,33 +1,34 @@
 ﻿using Model;
 using Networking.dto;
 using Networking.json;
-using Newtonsoft.Json;
 using Service;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading;
+using Newtonsoft.Json;
 
 public class ClientJsonWorker : IObserver
 {
     private IService server;
-    private TcpClient connection;
+    private Socket connection;
 
     private StreamReader input;
     private StreamWriter output;
-    private JsonSerializer jsonSerializer;
     private volatile bool connected;
 
-    public ClientJsonWorker(IService server, TcpClient connection)
+    public ClientJsonWorker(IService server, Socket connection)
     {
         this.server = server;
         this.connection = connection;
-        jsonSerializer = new JsonSerializer();
         try
         {
-            output = new StreamWriter(connection.GetStream());
-            input = new StreamReader(connection.GetStream());
+            NetworkStream networkStream = new NetworkStream(connection);
+            input = new StreamReader(networkStream);
+            output = new StreamWriter(networkStream);
             connected = true;
         }
         catch (IOException e)
@@ -43,32 +44,19 @@ public class ClientJsonWorker : IObserver
             try
             {
                 string requestLine = input.ReadLine();
-                if (requestLine != null)
+                Request request = JsonConvert.DeserializeObject<Request>(requestLine);
+                //Request request = JsonSerializer.Deserialize<Request>(requestLine);
+                Response response = HandleRequest(request);
+                if (response != null)
                 {
-                    Request request = JsonConvert.DeserializeObject<Request>(requestLine);
-                    Response response = HandleRequest(request);
-                    if (response != null)
-                    {
-                        SendResponse(response);
-                    }
-                }
-                else
-                {
-                    connected = false;
+                    SendResponse(response);
                 }
             }
             catch (IOException e)
             {
                 Console.WriteLine(e.StackTrace);
             }
-            try
-            {
-                Thread.Sleep(1000);
-            }
-            catch (ThreadInterruptedException e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            Thread.Sleep(1000);
         }
         try
         {
@@ -78,17 +66,17 @@ public class ClientJsonWorker : IObserver
         }
         catch (IOException e)
         {
-            Console.WriteLine("Error " + e);
+            Console.WriteLine(e.StackTrace);
         }
     }
 
     private Response HandleRequest(Request request)
     {
         Response response = null;
-        if (request.Type == RequestType.LOGIN)
+        if (request.type == RequestType.LOGIN)
         {
-            Console.WriteLine("Login request ..." + request.Type);
-            OfficeResponsableDTO officeResponsableDTO = request.OfficeResponsable;
+            Console.WriteLine("Login request ..." + request.type);
+            OfficeResponsableDTO officeResponsableDTO = request.officeResponsable;
             OfficeResponsable officeResponsable = DTOUtils.GetFromDTO(officeResponsableDTO);
             try
             {
@@ -101,7 +89,7 @@ public class ClientJsonWorker : IObserver
                 return JsonProtocolUtils.CreateErrorResponse(e.Message);
             }
         }
-        if (request.Type == RequestType.GET_ALL_CHALLENGES)
+        if (request.type == RequestType.GET_ALL_CHALLENGES)
         {
             Console.WriteLine("Get all challenges request ...");
             try
@@ -114,14 +102,14 @@ public class ClientJsonWorker : IObserver
                 return JsonProtocolUtils.CreateErrorResponse(e.Message);
             }
         }
-        if (request.Type == RequestType.GET_CHILDREN_BY_CHALLENGE_NAME_AND_GROUP_AGE)
+        if (request.type == RequestType.GET_CHILDREN_BY_CHALLENGE_NAME_AND_GROUP_AGE)
         {
-            Console.WriteLine("Get children by challenge name and group age request ..." + request.Type);
-            ChallengeDTO challengeDTO = request.Challenge;
+            Console.WriteLine("Get children by challenge name and group age request ..." + request.type);
+            ChallengeDTO challengeDTO = request.challenge;
             Challenge challenge = DTOUtils.GetFromDTO(challengeDTO);
             try
             {
-                Child[] children = server.GetEnrolledChildren(challenge.Name, challenge.GroupAge).ToArray();
+                Child[] children = server.GetEnrolledChildren(challenge.name, challenge.groupAge).ToArray();
                 response = JsonProtocolUtils.CreateAllChildrenByChallengeNameAndGroupAgeResponse(children);
             }
             catch (ServiceException e)
@@ -130,15 +118,15 @@ public class ClientJsonWorker : IObserver
             }
         }
 
-        if (request.Type == RequestType.ENROLL_CHILD)
+        if (request.type == RequestType.ENROLL_CHILD)
         {
-            Console.WriteLine("Enroll child request ..." + request.Type);
+            Console.WriteLine("Enroll child request ..." + request.type);
             try
             {
-                ChildDTO childDTO = request.Child;
+                ChildDTO childDTO = request.child;
                 Child child = DTOUtils.GetFromDTO(childDTO);
-                string challengeName = request.ChallengeName;
-                server.EnrollChild(child.Cnp, child.Name, child.Age, challengeName);
+                string challengeName = request.challengeName;
+                server.EnrollChild(child.cnp, child.name, child.age, challengeName);
                 return JsonProtocolUtils.CreateUpdateChallengesResponse();
             }
             catch (ServiceException e)
@@ -151,6 +139,12 @@ public class ClientJsonWorker : IObserver
 
     private void SendResponse(Response response)
     {
+        //string responseLine = JsonConvert.SerializeObject(response);
+        var options = new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() }
+        };
+        //string responseLine = JsonSerializer.Serialize(response, options);
         string responseLine = JsonConvert.SerializeObject(response);
         Console.WriteLine("sending response " + responseLine);
         lock (output)

@@ -1,4 +1,5 @@
-﻿using Networking.dto;
+﻿using Model;
+using Networking.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,10 @@ namespace Networking.json
 
     public class Request
     {
-        public RequestType Type { get; set; }
-        public OfficeResponsableDTO OfficeResponsable { get; set; }
-        public ChallengeDTO Challenge { get; set; }
-        public ChildDTO Child { get; set; }
-        public string ChallengeName { get; set; }
+        public RequestType type { get; set; }
+        public OfficeResponsableDTO officeResponsable { get; set; }
+        public ChallengeDTO challenge { get; set; }
+        public ChildDTO child { get; set; }
+        public string challengeName { get; set; }
     }
 }

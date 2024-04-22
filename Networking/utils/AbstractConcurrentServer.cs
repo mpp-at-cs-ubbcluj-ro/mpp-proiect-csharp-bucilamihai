@@ -14,12 +14,12 @@ namespace Networking.utils
             Console.WriteLine("Concurrent AbstractServer");
         }
 
-        protected override void ProcessRequest(TcpClient client)
+        protected override void ProcessRequest(Socket client)
         {
             Thread tw = CreateWorker(client);
             tw.Start();
         }
 
-        protected abstract Thread CreateWorker(TcpClient client);
+        protected abstract Thread CreateWorker(Socket client);
     }
 }

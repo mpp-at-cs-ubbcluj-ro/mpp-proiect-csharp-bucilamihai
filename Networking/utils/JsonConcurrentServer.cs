@@ -19,7 +19,7 @@ namespace Networking.utils
             Console.WriteLine("Contest - JsonConcurrentServer");
         }
 
-        protected override Thread CreateWorker(TcpClient client)
+        protected override Thread CreateWorker(Socket client)
         {
             ClientJsonWorker worker = new ClientJsonWorker(server, client);
             return new Thread(worker.Run);

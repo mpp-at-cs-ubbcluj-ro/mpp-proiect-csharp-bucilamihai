@@ -30,3 +30,4 @@ C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0-windows\ref\Client.dll
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0-windows\Client.sourcelink.json

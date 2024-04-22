@@ -15,3 +15,4 @@ C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Model.pdb
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Service.pdb
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.csproj.Up2Date
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.sourcelink.json

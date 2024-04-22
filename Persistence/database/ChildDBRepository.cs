@@ -31,9 +31,9 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@cnp", elem.Cnp);
-                    command.Parameters.AddWithValue("@name", elem.Name);
-                    command.Parameters.AddWithValue("@age", elem.Age);
+                    command.Parameters.AddWithValue("@cnp", elem.cnp);
+                    command.Parameters.AddWithValue("@name", elem.name);
+                    command.Parameters.AddWithValue("@age", elem.age);
                     int result = command.ExecuteNonQuery();
                     log.Info($"added {result} instances");
                 }
@@ -56,9 +56,9 @@ namespace Persistence.database
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@cnp", elem.Cnp);
-                    command.Parameters.AddWithValue("@name", elem.Name);
-                    command.Parameters.AddWithValue("@age", elem.Age);
+                    command.Parameters.AddWithValue("@cnp", elem.cnp);
+                    command.Parameters.AddWithValue("@name", elem.name);
+                    command.Parameters.AddWithValue("@age", elem.age);
                     int result = command.ExecuteNonQuery();
                     log.Info($"updated {result} instances");
                 }
@@ -79,7 +79,7 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id", elem.Id);
+                    command.Parameters.AddWithValue("@id", elem.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"deleted {result} instances");
                 }
@@ -109,7 +109,7 @@ namespace Persistence.database
                             string name = reader.GetString(2);
                             int age = reader.GetInt32(3);
                             Child child = new Child(cnp, name, age);
-                            child.Id = id;
+                            child.id = id;
                             children.Add(child);
                         }
                     }
@@ -142,7 +142,7 @@ namespace Persistence.database
                             string name = reader.GetString(2);
                             int age = reader.GetInt32(3);
                             Child child = new Child(cnp, name, age);
-                            child.Id = id;
+                            child.id = id;
                             log.Info($"child with id {id} found");
                             return child;
                         }
@@ -186,7 +186,7 @@ namespace Persistence.database
                             string name = reader.GetString(2);
                             int age = reader.GetInt32(3);
                             Child child = new Child(cnp, name, age);
-                            child.Id = id;
+                            child.id = id;
                             children.Add(child);
                         }
                     }
@@ -219,7 +219,7 @@ namespace Persistence.database
                             string name = reader.GetString(2);
                             int age = reader.GetInt32(3);
                             Child child = new Child(cnp, name, age);
-                            child.Id = id;
+                            child.id = id;
                             log.Info($"child with cnp {cnp} found");
                             return child;
                         }

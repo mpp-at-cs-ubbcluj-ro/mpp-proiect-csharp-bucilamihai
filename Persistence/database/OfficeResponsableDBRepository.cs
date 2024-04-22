@@ -32,8 +32,8 @@ namespace Persistence.database
 
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@username", elem.Username);
-                    command.Parameters.AddWithValue("@password", elem.Password);
+                    command.Parameters.AddWithValue("@username", elem.username);
+                    command.Parameters.AddWithValue("@password", elem.password);
                     int result = command.ExecuteNonQuery();
                     log.Info($"added {result} instances");
                 }
@@ -54,7 +54,7 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id", elem.Id);
+                    command.Parameters.AddWithValue("@id", elem.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"deleted {result} instances");
                 }
@@ -83,7 +83,7 @@ namespace Persistence.database
                             string username = reader.GetString(1);
                             string password = reader.GetString(2);
                             OfficeResponsable officeResponsable = new OfficeResponsable(username, password);
-                            officeResponsable.Id = id;
+                            officeResponsable.id = id;
                             officeResponsables.Add(officeResponsable);
                         }
                     }
@@ -115,7 +115,7 @@ namespace Persistence.database
                             string username = reader.GetString(1);
                             string password = reader.GetString(2);
                             OfficeResponsable officeResponsable = new OfficeResponsable(username, password);
-                            officeResponsable.Id = id;
+                            officeResponsable.id = id;
                             log.Info($"office responsable with id {id} found");
                             return officeResponsable;
                         }
@@ -153,7 +153,7 @@ namespace Persistence.database
                         {
                             long id = reader.GetInt64(0);
                             OfficeResponsable officeResponsable = new OfficeResponsable(username, password);
-                            officeResponsable.Id = id;
+                            officeResponsable.id = id;
                             log.Info($"office responsable with id {id} found");
                             return officeResponsable;
                         }
@@ -180,8 +180,8 @@ namespace Persistence.database
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@username", elem.Username);
-                    command.Parameters.AddWithValue("@password", elem.Password);
+                    command.Parameters.AddWithValue("@username", elem.username);
+                    command.Parameters.AddWithValue("@password", elem.password);
                     int result = command.ExecuteNonQuery();
                     log.Info($"updated {result} instances");
                 }

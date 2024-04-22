@@ -9,3 +9,4 @@ C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Model\obj\Debug\net8.
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Model\obj\Debug\net8.0\refint\Model.dll
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Model\obj\Debug\net8.0\Model.pdb
 C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Model\obj\Debug\net8.0\ref\Model.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Model\obj\Debug\net8.0\Model.sourcelink.json

@@ -30,8 +30,8 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@child_id", elem.Child.Id);
-                    command.Parameters.AddWithValue("@challenge_id", elem.Challenge.Id);
+                    command.Parameters.AddWithValue("@child_id", elem.child.id);
+                    command.Parameters.AddWithValue("@challenge_id", elem.challenge.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"added {result} instances");
                 }
@@ -52,7 +52,7 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id", elem.Id);
+                    command.Parameters.AddWithValue("@id", elem.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"deleted {result} instances");
                 }
@@ -94,7 +94,7 @@ namespace Persistence.database
                                         string name = readerChild.GetString(2);
                                         int age = readerChild.GetInt32(3);
                                         child = new Child(cnp, name, age);
-                                        child.Id = child_id;
+                                        child.id = child_id;
                                         log.Info($"child with id {child_id} found");
                                     }
                                 }
@@ -115,14 +115,14 @@ namespace Persistence.database
                                         string groupAge = readerChallenge.GetString(2);
                                         int numberOfParticipants = readerChallenge.GetInt32(3);
                                         challenge = new Challenge(name, groupAge, numberOfParticipants);
-                                        challenge.Id = challenge_id;
+                                        challenge.id = challenge_id;
                                         log.Info($"challenge with id {challenge_id} found");
                                     }
                                 }
                             }
 
                             Enrollment enrollment = new Enrollment(child, challenge);
-                            enrollment.Id = id;
+                            enrollment.id = id;
                             enrollments.Add(enrollment);
                         }
                     }
@@ -166,7 +166,7 @@ namespace Persistence.database
                                         string name = readerChild.GetString(2);
                                         int age = readerChild.GetInt32(3);
                                         child = new Child(cnp, name, age);
-                                        child.Id = child_id;
+                                        child.id = child_id;
                                         log.Info($"child with id {child_id} found");
                                     }
                                 }
@@ -187,14 +187,14 @@ namespace Persistence.database
                                         string groupAge = readerChallenge.GetString(2);
                                         int numberOfParticipants = readerChallenge.GetInt32(3);
                                         challenge = new Challenge(name, groupAge, numberOfParticipants);
-                                        challenge.Id = challenge_id;
+                                        challenge.id = challenge_id;
                                         log.Info($"challenge with id {challenge_id} found");
                                     }
                                 }
                             }
 
                             Enrollment enrollment = new Enrollment(child, challenge);
-                            enrollment.Id = id;
+                            enrollment.id = id;
                             log.Info($"enrollment with id {id} found");
                             return enrollment;
                         }
@@ -226,8 +226,8 @@ namespace Persistence.database
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@child_id", elem.Child.Id);
-                    command.Parameters.AddWithValue("@challenge_id", elem.Challenge.Id);
+                    command.Parameters.AddWithValue("@child_id", elem.child.id);
+                    command.Parameters.AddWithValue("@challenge_id", elem.challenge.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"updated {result} instances");
                 }

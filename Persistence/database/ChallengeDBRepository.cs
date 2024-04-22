@@ -33,9 +33,9 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@name", elem.Name);
-                    command.Parameters.AddWithValue("@groupAge", elem.GroupAge);
-                    command.Parameters.AddWithValue("@numberOfParticipants", elem.NumberOfParticipants);
+                    command.Parameters.AddWithValue("@name", elem.name);
+                    command.Parameters.AddWithValue("@groupAge", elem.groupAge);
+                    command.Parameters.AddWithValue("@numberOfParticipants", elem.numberOfParticipants);
                     int result = command.ExecuteNonQuery();
                     log.Info($"added {result} instances");
                 }
@@ -58,9 +58,9 @@ namespace Persistence.database
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
-                    command.Parameters.AddWithValue("@name", elem.Name);
-                    command.Parameters.AddWithValue("@groupAge", elem.GroupAge);
-                    command.Parameters.AddWithValue("@numberOfParticipants", elem.NumberOfParticipants);
+                    command.Parameters.AddWithValue("@name", elem.name);
+                    command.Parameters.AddWithValue("@groupAge", elem.groupAge);
+                    command.Parameters.AddWithValue("@numberOfParticipants", elem.numberOfParticipants);
                     int result = command.ExecuteNonQuery();
                     log.Info($"updated {result} instances");
                 }
@@ -81,7 +81,7 @@ namespace Persistence.database
                 SQLiteConnection connection = dbUtils.GetConnection();
                 using (SQLiteCommand command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@id", elem.Id);
+                    command.Parameters.AddWithValue("@id", elem.id);
                     int result = command.ExecuteNonQuery();
                     log.Info($"deleted {result} instances");
                 }
@@ -111,7 +111,7 @@ namespace Persistence.database
                             string groupAge = reader.GetString(2);
                             int numberOfParticipants = reader.GetInt32(3);
                             Challenge challenge = new Challenge(name, groupAge, numberOfParticipants);
-                            challenge.Id = id;
+                            challenge.id = id;
                             challenges.Add(challenge);
                         }
                     }
@@ -144,7 +144,7 @@ namespace Persistence.database
                             string groupAge = reader.GetString(2);
                             int numberOfParticipants = reader.GetInt32(3);
                             Challenge challenge = new Challenge(name, groupAge, numberOfParticipants);
-                            challenge.Id = id;
+                            challenge.id = id;
                             log.Info($"challenge with id {id} found");
                             return challenge;
                         }
@@ -184,7 +184,7 @@ namespace Persistence.database
                             long id = reader.GetInt64(0);
                             int numberOfParticipants = reader.GetInt32(3);
                             Challenge challenge = new Challenge(challengeName, groupAge, numberOfParticipants);
-                            challenge.Id = id;
+                            challenge.id = id;
                             log.Info($"challenge with id {id} found");
                             return challenge;
                         }

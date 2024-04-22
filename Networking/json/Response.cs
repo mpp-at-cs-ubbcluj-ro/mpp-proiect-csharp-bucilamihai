@@ -1,4 +1,5 @@
-﻿using Networking.dto;
+﻿using Model;
+using Networking.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace Networking.json
 
     public class Response
     {
-        public ResponseType Type { get; set; }
-        public string ErrorMessage { get; set; }
-        public ChallengeDTO[] Challenges { get; set; }
-        public ChildDTO[] Children { get; set; }
+        public ResponseType type { get; set; }
+        public string errorMessage { get; set; }
+        public ChallengeDTO[] challenges { get; set; }
+        public ChildDTO[] children { get; set; }
     }
 }

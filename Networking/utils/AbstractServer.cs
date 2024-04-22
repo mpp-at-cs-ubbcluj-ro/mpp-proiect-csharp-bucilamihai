@@ -12,7 +12,7 @@ namespace Networking.utils
     {
         private int port;
         private string host;
-        private TcpListener server = null;
+        private Socket server = null;
 
         public AbstractServer(string host, int port)
         {
@@ -24,14 +24,15 @@ namespace Networking.utils
         {
             try
             {
-                IPAddress adr = IPAddress.Parse(host);
-                IPEndPoint ep = new IPEndPoint(adr, port);
-                server = new TcpListener(ep);
-                server.Start();
+                IPAddress ipAddress = IPAddress.Parse(host);
+                IPEndPoint localEndPoint = new IPEndPoint(ipAddress, port);
+                server = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                server.Bind(localEndPoint);
+                server.Listen(10);
                 while (true)
                 {
                     Console.WriteLine("Waiting for clients ...");
-                    TcpClient client = server.AcceptTcpClient();
+                    Socket client = server.Accept();
                     Console.WriteLine("Client connected ...");
                     //Task.Run(() => ProcessRequest(client));
                     ProcessRequest(client);
@@ -47,13 +48,14 @@ namespace Networking.utils
             }
         }
 
-        protected abstract void ProcessRequest(TcpClient client);
+        protected abstract void ProcessRequest(Socket client);
 
         public void Stop()
         {
             try
             {
-                server.Stop();
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
             }
             catch (Exception e)
             {

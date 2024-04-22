@@ -8,25 +8,13 @@ namespace Model
 {
     public class Enrollment: Entity<long>
     {
-        private Child child;
-        private Challenge challenge;
+        public Child child { get; set; }
+        public Challenge challenge {  get; set; }
 
         public Enrollment(Child child, Challenge challenge)
         {
             this.child = child;
             this.challenge = challenge;
-        }
-
-        public Child Child
-        {
-            get { return child; }
-            set { child = value; }
-        }
-
-        public Challenge Challenge
-        {
-            get { return challenge; }
-            set { challenge = value; }
         }
     }
 }

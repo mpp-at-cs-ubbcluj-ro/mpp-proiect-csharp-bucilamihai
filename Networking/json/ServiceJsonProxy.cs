@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Sockets;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Networking.json
@@ -22,7 +24,7 @@ namespace Networking.json
         private StreamReader input;
         private StreamWriter output;
 
-        private TcpClient connection;
+        private Socket connection;
 
         private BlockingCollection<Response> qresponses;
         private volatile bool finished;
@@ -40,14 +42,14 @@ namespace Networking.json
             Request request = JsonProtocolUtils.CreateLoginRequest(officeResponsable);
             SendRequest(request);
             Response response = ReadResponse();
-            if (response.Type == ResponseType.OK)
+            if (response.type == ResponseType.OK)
             {
                 this.client = client;
                 return;
             }
-            if (response.Type == ResponseType.ERROR)
+            if (response.type == ResponseType.ERROR)
             {
-                string error = response.ErrorMessage;
+                string error = response.errorMessage;
                 CloseConnection();
                 throw new ServiceException(error);
             }
@@ -58,12 +60,12 @@ namespace Networking.json
             Request request = JsonProtocolUtils.CreateAllChallengesRequest();
             SendRequest(request);
             Response response = ReadResponse();
-            if (response.Type == ResponseType.ERROR)
+            if (response.type == ResponseType.ERROR)
             {
-                string error = response.ErrorMessage;
+                string error = response.errorMessage;
                 throw new ServiceException(error);
             }
-            ChallengeDTO[] challengeDTO = response.Challenges;
+            ChallengeDTO[] challengeDTO = response.challenges;
             Challenge[] challenges = DTOUtils.GetFromDTO(challengeDTO);
             return new Collection<Challenge>(challenges);
         }
@@ -74,12 +76,12 @@ namespace Networking.json
             Request request = JsonProtocolUtils.CreateGetChildrenByChallengeNameAndGroupAgeRequest(challenge);
             SendRequest(request);
             Response response = ReadResponse();
-            if (response.Type == ResponseType.ERROR)
+            if (response.type == ResponseType.ERROR)
             {
-                string error = response.ErrorMessage;
+                string error = response.errorMessage;
                 throw new ServiceException(error);
             }
-            ChildDTO[] childrenDTO = response.Children;
+            ChildDTO[] childrenDTO = response.children;
             Child[] children = DTOUtils.GetFromDTO(childrenDTO);
             return new Collection<Child>(children);
         }
@@ -90,9 +92,9 @@ namespace Networking.json
             Request request = JsonProtocolUtils.CreateEnrollChildRequest(child, challengeName);
             SendRequest(request);
             Response response = JsonProtocolUtils.CreateUpdateChallengesResponse();
-            if (response.Type == ResponseType.ERROR)
+            if (response.type == ResponseType.ERROR)
             {
-                string error = response.ErrorMessage;
+                string error = response.errorMessage;
                 throw new ServiceException(error);
             }
         }
@@ -115,7 +117,13 @@ namespace Networking.json
 
         private void SendRequest(Request request)
         {
+            var options = new JsonSerializerOptions
+            {
+                Converters = { new JsonStringEnumConverter() }
+            }; // server C# - client java
+
             string reqLine = JsonConvert.SerializeObject(request);
+            //string reqLine = JsonSerializer.Serialize(request);
             try
             {
                 Console.WriteLine($"output: {reqLine}");
@@ -146,9 +154,11 @@ namespace Networking.json
         {
             try
             {
-                connection = new TcpClient(host, port);
-                output = new StreamWriter(connection.GetStream());
-                input = new StreamReader(connection.GetStream());
+                connection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                connection.Connect(host, port);
+                NetworkStream networkStream = new NetworkStream(connection);
+                input = new StreamReader(networkStream);
+                output = new StreamWriter(networkStream);
                 finished = false;
                 StartReader();
             }
@@ -160,7 +170,7 @@ namespace Networking.json
 
         private void HandleUpdate(Response response)
         {
-            if (response.Type == ResponseType.UPDATE_CHALLENGES)
+            if (response.type == ResponseType.UPDATE_CHALLENGES)
             {
                 Console.WriteLine("(handleUpdate) - update challenges");
                 client.UpdateEnrolledChildren();
@@ -169,7 +179,7 @@ namespace Networking.json
 
         private bool IsUpdate(Response response)
         {
-            return response.Type == ResponseType.UPDATE_CHALLENGES;
+            return response.type == ResponseType.UPDATE_CHALLENGES;
         }
 
         private void StartReader()
@@ -196,6 +206,7 @@ namespace Networking.json
                         string responseLine = serviceJsonProxy.input.ReadLine();
                         Console.WriteLine("response received " + responseLine);
                         Response response = JsonConvert.DeserializeObject<Response>(responseLine);
+                        //Response response = JsonSerializer.Deserialize<Response>(responseLine);                    
                         if (serviceJsonProxy.IsUpdate(response))
                         {
                             serviceJsonProxy.HandleUpdate(response);

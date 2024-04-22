@@ -7,31 +7,31 @@ namespace Networking.dto
     {
         public static OfficeResponsable GetFromDTO(OfficeResponsableDTO officeResponsableDTO)
         {
-            string username = officeResponsableDTO.Username;
-            string password = officeResponsableDTO.Password;
+            string username = officeResponsableDTO.username;
+            string password = officeResponsableDTO.password;
             return new OfficeResponsable(username, password);
         }
 
         public static OfficeResponsableDTO GetDTO(OfficeResponsable user)
         {
-            string username = user.Username;
-            string password = user.Password;
+            string username = user.username;
+            string password = user.password;
             return new OfficeResponsableDTO(username, password);
         }
 
         public static Challenge GetFromDTO(ChallengeDTO challengeDTO)
         {
-            string name = challengeDTO.Name;
-            string groupAge = challengeDTO.GroupAge;
-            int numberOfParticipants = challengeDTO.NumberOfParticipants;
+            string name = challengeDTO.name;
+            string groupAge = challengeDTO.groupAge;
+            int numberOfParticipants = challengeDTO.numberOfParticipants;
             return new Challenge(name, groupAge, numberOfParticipants);
         }
 
         public static ChallengeDTO GetDTO(Challenge challenge)
         {
-            string name = challenge.Name;
-            string groupAge = challenge.GroupAge;
-            int numberOfParticipants = challenge.NumberOfParticipants;
+            string name = challenge.name;
+            string groupAge = challenge.groupAge;
+            int numberOfParticipants = challenge.numberOfParticipants;
             return new ChallengeDTO(name, groupAge, numberOfParticipants);
         }
 
@@ -77,17 +77,17 @@ namespace Networking.dto
 
         public static ChildDTO GetDTO(Child child)
         {
-            long cnp = child.Cnp;
-            string name = child.Name;
-            int age = child.Age;
+            long cnp = child.cnp;
+            string name = child.name;
+            int age = child.age;
             return new ChildDTO(cnp, name, age);
         }
 
         public static Child GetFromDTO(ChildDTO childDTO)
         {
-            long cnp = childDTO.Cnp;
-            string name = childDTO.Name;
-            int age = childDTO.Age;
+            long cnp = childDTO.cnp;
+            string name = childDTO.name;
+            int age = childDTO.age;
             return new Child(cnp, name, age);
         }
     }

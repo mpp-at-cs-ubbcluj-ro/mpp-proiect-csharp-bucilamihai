@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|c:\\users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\networking\\dto\\dtoutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|solutionrelative:networking\\dto\\dtoutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\networking\\json\\clientjsonworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|solutionrelative:networking\\json\\clientjsonworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\networking\\json\\servicejsonproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{643570E4-F49E-40AE-9961-3DC56E81DE3E}|Networking\\Networking.csproj|solutionrelative:networking\\json\\servicejsonproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,15 +31,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAARAAAA",
+              "Title": "DTOUtils.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\dto\\DTOUtils.cs",
+              "RelativeDocumentMoniker": "Networking\\dto\\DTOUtils.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\dto\\DTOUtils.cs",
+              "RelativeToolTip": "Networking\\dto\\DTOUtils.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T06:58:29.229Z",
+              "WhenOpened": "2024-04-22T19:32:40.46Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientJsonWorker.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\json\\ClientJsonWorker.cs",
+              "RelativeDocumentMoniker": "Networking\\json\\ClientJsonWorker.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\json\\ClientJsonWorker.cs",
+              "RelativeToolTip": "Networking\\json\\ClientJsonWorker.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAAACgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T16:28:03.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceJsonProxy.cs",
+              "DocumentMoniker": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\json\\ServiceJsonProxy.cs",
+              "RelativeDocumentMoniker": "Networking\\json\\ServiceJsonProxy.cs",
+              "ToolTip": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\json\\ServiceJsonProxy.cs",
+              "RelativeToolTip": "Networking\\json\\ServiceJsonProxy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFAAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T16:27:51.484Z"
             }
           ]
         }

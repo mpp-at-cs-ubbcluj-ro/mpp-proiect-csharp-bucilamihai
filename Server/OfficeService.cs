@@ -25,12 +25,12 @@ namespace Server
 
         public void Login(OfficeResponsable officeResponsable, IObserver client)
         {
-            OfficeResponsable officeResponsableFound = officeResponsableRepository.GetByUsernameAndPassword(officeResponsable.Username, officeResponsable.Password);
+            OfficeResponsable officeResponsableFound = officeResponsableRepository.GetByUsernameAndPassword(officeResponsable.username, officeResponsable.password);
             if (officeResponsableFound != null)
             {
-                if (loggedResponsables.ContainsKey(officeResponsableFound.Username))
+                if (loggedResponsables.ContainsKey(officeResponsableFound.username))
                     throw new ServiceException("User already logged in.");
-                loggedResponsables[officeResponsableFound.Username] = client;
+                loggedResponsables[officeResponsableFound.username] = client;
             }
             else
                 throw new ServiceException("Invalid username or password");
@@ -64,7 +64,7 @@ namespace Server
             Enrollment enrollment = new Enrollment(childWithId, challenge);
             enrollmentRepository.Add(enrollment);
             challenge.increaseNumberOfParticipants();
-            challengeRepository.Update(challenge, challenge.Id);
+            challengeRepository.Update(challenge, challenge.id);
             NotifyLoggedResponsables();
         }
 

@@ -9,12 +9,6 @@ namespace Model
 {
     public class Entity<ID>
     {
-        private ID id;
-
-        public ID Id 
-        { 
-            get { return id; } 
-            set { id = value; }
-        }
+        public ID id { get; set; }
     }
 }
