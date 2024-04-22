@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "h4Et0Gc8SsQnVoLU+i/VgwiNOjmSR70MHs9IP2w1BY6Vak1/XxanzKk/ul6F5PPgOHO7vrdKZGEPY+TkRBw8Gw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Networking\\Networking.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bmcmi\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\bmcmi\\.nuget\\packages\\nunit\\4.1.0\\nunit.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

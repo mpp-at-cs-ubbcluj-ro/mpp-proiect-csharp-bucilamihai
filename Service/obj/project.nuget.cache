@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "g6OZ4ozzmgXG+EOFEdcCb+XkcOxFsK7GFve8LAU/SYEHtTIGoyhIVkgGlYTjpjMzr7wB1qW0vV1zQNF5f47IXQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Service\\Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bmcmi\\.nuget\\packages\\nunit\\4.1.0\\nunit.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

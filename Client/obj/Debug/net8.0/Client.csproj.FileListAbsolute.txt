@@ -1,0 +1,5 @@
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0\Client.csproj.AssemblyReference.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0\Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0\Client.AssemblyInfoInputs.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0\Client.AssemblyInfo.cs
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Client\obj\Debug\net8.0\Client.csproj.CoreCompileInputs.cache

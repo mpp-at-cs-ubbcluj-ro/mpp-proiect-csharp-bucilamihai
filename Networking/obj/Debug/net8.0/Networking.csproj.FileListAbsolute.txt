@@ -1,0 +1,17 @@
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Networking.deps.json
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Networking.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Networking.pdb
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.AssemblyInfoInputs.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.AssemblyInfo.cs
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.csproj.CoreCompileInputs.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\refint\Networking.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.pdb
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\ref\Networking.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.csproj.AssemblyReference.cache
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Model.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Service.dll
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Model.pdb
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\bin\Debug\net8.0\Service.pdb
+C:\Users\bmcmi\source\repos\mpp-proiect-csharp-bucilamihai\Networking\obj\Debug\net8.0\Networking.csproj.Up2Date

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "P7IrHJ4URLHWMjNMRkzFF+6bZJcghzgaFnEPxb9s0l2fVKuAUhHAdww9YvZM2V6GnHFxvZfIyA9gD1+5dMveiw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bmcmi\\source\\repos\\mpp-proiect-csharp-bucilamihai\\Client\\Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bmcmi\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\bmcmi\\.nuget\\packages\\nunit\\4.1.0\\nunit.4.1.0.nupkg.sha512",
+    "C:\\Users\\bmcmi\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "C:\\Users\\bmcmi\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "C:\\Users\\bmcmi\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
